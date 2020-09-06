@@ -69,3 +69,10 @@ if(BUILD_TESTING)
     enable_testing()
     add_subdirectory(tests)
 endif()
+
+# auto install after build
+add_custom_command(
+    TARGET wss_examples
+    POST_BUILD
+    COMMAND ${CMAKE_COMMAND} --build ${CMAKE_BINARY_DIR} --target install
+)
